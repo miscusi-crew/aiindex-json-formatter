@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JSON Formatter</title>
+<link rel="icon" href="icon.svg">
+<link rel="stylesheet" href="base.css">
+<style>
+  main{max-width:64rem}
+  .panes{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-top:.75rem}
+  @media (max-width:44rem){.panes{grid-template-columns:1fr}}
+  textarea{width:100%;min-height:22rem;font:13px/1.5 ui-monospace,Menlo,Consolas,monospace;resize:vertical;tab-size:2}
+  .err{color:var(--bad);font-weight:600;min-height:1.5rem}
+  .okmsg{color:var(--good);font-weight:600}
+  label{display:flex;gap:.35rem;align-items:center}
+</style>
+</head>
+<body>
+<main>
+  <h1>JSON Formatter</h1>
+  <p class="sub">Paste JSON to format, validate or minify it. Nothing leaves your browser.</p>
+  <div class="row">
+    <button id="format" class="primary">Format</button>
+    <button id="minify">Minify</button>
+    <label for="indent">Indent <select id="indent"><option value="2">2 spaces</option><option value="4">4 spaces</option><option value="tab">Tab</option></select></label>
+    <label><input type="checkbox" id="sort"> Sort keys</label>
+    <button id="copy">Copy result</button>
+  </div>
+  <p id="status" class="err" role="status"></p>
+  <div class="panes">
+    <textarea id="input" spellcheck="false" aria-label="JSON input">{"name":"AI Index","apps":[{"title":"JSON Formatter","offline":true,"tags":["json","tools"]}],"version":1}</textarea>
+    <textarea id="output" spellcheck="false" readonly aria-label="Result"></textarea>
+  </div>
+</main>
+<script src="app.js"></script>
+</body>
+</html>
